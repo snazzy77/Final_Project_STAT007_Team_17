@@ -1,0 +1,78 @@
+---
+title: 'Data Cleaning & Processing'
+author: "Team 17"
+date: 'Due 2024-11-07'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Data Cleaning and Processing
+
+This R Markdown document details the steps taken to ingest, clean, and integrate the three macroeconomic time-series datasets: Federal Funds Rate (FEDFUNDS), Unemployment Rate (UNRATE), and GDP Growth Rate.
+
+The primary cleaning goals are to ensure proper data types (especially for the date column), assign descriptive column names, and merge the datasets for unified analysis.
+
+# Process Federal Funds Rate
+
+```{r}
+fedfunds_processed <- clean_data(
+  file_path = "FEDFUNDS.csv", 
+  new_col_name = "Fed_Funds_Rate", 
+  original_col_name = "FEDFUNDS"
+)
+```
+
+# Process Unemployment Rate
+
+```{r}
+unrate_processed <- clean_data(
+  file_path = "UNRATE.csv", 
+  new_col_name = "Unemployment_Rate", 
+  original_col_name = "UNRATE"
+)
+```
+
+# Process GDP Growth Rate
+```{r}
+gdp_processed <- clean_data(
+  file_path = "GDP_GROWTH_RATE.csv", 
+  new_col_name = "GDP_Growth_Rate", 
+  original_col_name = "A191RL1Q225SBEA"
+)
+```
+
+# Federal Funds Rate Data Inspection
+```{r}
+head(fedfunds_processed)
+```
+
+# Federal Unemployment Rate Data Inspection
+```{r}
+head(unrate_processed)
+```
+
+# Growth Rate Data Inspection
+```{r}
+head(gdp_processed)
+```
+
+# Merging the 3 datasets
+```{r}
+combined_data <- merge_macro_data(
+    fedfunds_processed, 
+    gdp_processed, 
+    unrate_processed
+)
+```
+
+# Combined Data Inspection
+```{r}
+head(combined_data)
+```

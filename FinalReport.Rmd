@@ -1,0 +1,136 @@
+---
+title: 'Analyzing the Relationship Between Interest Rates and Economic Growth Across Varying Financial Crises'
+author: "Team 17"
+date: 'Due 2025-11-07'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Abstract
+
+We will be analyzing the relationship between interest rates and economic growth/indicators across financial crises that occurred in 2001, 2008, and 2020 (the dot-com crisis, the great recession and the COVID-induced recession). We will specifically analyze GDP growth and unemployment during the three major U.S. financial crises and we will determine whether changes in interest rates reveal relationships with GDP growth and unemployment across economic disasters. According to our preliminary analysis, interest rates and GDP growth seem to move in the same direction; however, the strength and significance of this relationship varies across crises.
+
+# Introduction
+
+The ultimate goal of this project is to explore how interest rates interact with key economic indicators such as GDP growth and unemployment during varying financial crises. Understanding this relationship will lead to a better comprehension of how monetary policy affects the country’s economy, which will benefit economists or politicians who are interested in how the Federal Reserve’s actions affect the economy. We will fit separate linear regression models for each recession to test whether interest rates are significant predictors of GDP growth, and then evaluate whether a unified model across all periods can describe the data effectively and accurately.
+
+# Data
+
+Our dataset will be a combination of public economic data from the Federal Reserve Economic Data (FRED) database. Key variables we will utilize include: - Date
+
+-   
+
+    -   Quarter (YYYY-Q)
+
+-   Interest_Rate
+
+-   
+
+    -   Federal Funds Effective Rate (%)
+
+-   GDP_Growth
+
+-   
+
+    -   Quarterly GDP growth rate (%)
+
+-   Unemployment_Rate
+
+-   
+
+    -   Civilian Unemployment Rate (%)
+
+# Visualization
+
+
+```{r, echo = FALSE}
+plot_single_time_series(
+    df = fedfunds_processed,
+    title = "Federal Funds Rate Over Time (Monthly)",
+    y_label = "Fed Funds Rate (%)",
+    color = 'blue'
+)
+```
+
+
+
+```{r, echo = FALSE}
+plot_single_time_series(
+    df = unrate_processed,
+    title = "Unemployment Rate Over Time (Monthly)",
+    y_label = "Unemployment Rate (%)",
+    color = 'red'
+)
+```
+
+
+
+```{r, echo = FALSE}
+plot_single_time_series(
+    df = gdp_processed,
+    title = "GDP Growth Rate Over Time (Quarterly)",
+    y_label = "Annualized GDP Growth Rate (%)",
+    color = 'darkgreen'
+)
+
+```
+
+
+
+```{r, echo = FALSE}
+summary(combined_data)
+```
+
+
+```{r, echo = FALSE}
+plot_histogram(
+    data = combined_data,
+    column_name = "GDP_Growth_Rate",
+    title_suffix = "GDP Growth Rate"
+)
+
+```
+
+
+```{r, echo = FALSE}
+plot_density(
+    data = combined_data,
+    column_name = "Fed_Funds_Rate",
+    title_suffix = "Federal Funds Rate",
+    color = "purple"
+)
+
+```
+
+
+```{r, echo = FALSE}
+plot_scatter(
+    data = combined_data,
+    x_col = "Unemployment_Rate",
+    y_col = "Fed_Funds_Rate",
+    main_title = "Federal Funds Rate vs. Unemployment Rate",
+    x_label = "Unemployment Rate (%)",
+    y_label = "Fed Funds Rate (%)"
+)
+
+```
+
+
+
+```{r, echo = FALSE}
+plot_scatter(
+    data = combined_data,
+    x_col = "Unemployment_Rate",
+    y_col = "GDP_Growth_Rate",
+    main_title = "GDP Growth Rate vs. Unemployment Rate",
+    x_label = "Unemployment Rate (%)",
+    y_label = "GDP Growth Rate (%)"
+)
+```
+
+# Analysis
