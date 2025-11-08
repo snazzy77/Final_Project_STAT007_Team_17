@@ -34,9 +34,10 @@ Follow these steps to reproduce the analysis:
    git clone <repo-url>
 
 2. Once you have all the files on your local machine, then open Rstudio.
-3. First you need to run **00_requirements.R** so that you can load in all the necessary packages.
-4. Then you have to run **00_requirements.R** so that you have the functions to clean and preprocess the data for the next step.
-5. Then you have to run **DataCleaning.Rmd** so that you can use the functions in the previous step to get the cleaned and preprocessed data.
-6. Then you have to run **02_funct_Plots.R** so that you get the functions to make the plots and visualizations.
-7. Lastly you have to run **FinalReport.Rmd** so that you can get the full analytical report.
-8. Then to get the pdf just knit the R markdown file to a pdf.
+3. Now you have to import the three datasets.
+4. First you need to run **00_requirements.R** so that you can load in all the necessary packages.
+5. Then you have to run **00_requirements.R** so that you have the functions to clean and preprocess the data for the next step.
+6. Then you have to run **DataCleaning.Rmd** so that you can use the functions in the previous step to get the cleaned and preprocessed data.
+7. Then you have to run **02_funct_Plots.R** so that you get the functions to make the plots and visualizations.
+8. Lastly you have to run **FinalReport.Rmd** so that you can get the full analytical report.
+9. Then to get the pdf just knit the R markdown file to a pdf.
