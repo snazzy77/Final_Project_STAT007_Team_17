@@ -95,6 +95,7 @@ plot_single_time_series(
     color = 'blue'
 )
 ```
+This visualization shows the Federal Fund Rate by month. We can see that the Federal Fund's Rate declines majorly during recessions (2001, 2008, 2020) which reflects the fed attempting to stimulate the economy. They do this by making borrowing rates cheaper, which makes money easier to borrow in order to incentivize the American people to borrow money.
 
 
 
@@ -106,7 +107,7 @@ plot_single_time_series(
     color = 'red'
 )
 ```
-
+This plot shows the unemployment rate by month. We can again see that during recession times (2001, 2008, 2020), unemployment skyrockets. We notice that during 2020 especially unemployment reaches an all time high, which is most likely due to the Covid pandemic forcing mass layoffs across the country.
 
 
 ```{r, echo = FALSE}
@@ -118,7 +119,7 @@ plot_single_time_series(
 )
 
 ```
-
+This visualization shows the GDP growth by quarter. We can see that GDP growth falls sharply during major recessions, (2001, 2008, 2020) where an extreme negative shock is followed by a rapid rebound. These downturns align with periods of rising unemployment and declining interest rates, suggesting that GDP growth and monetary policy are closely linked during times of economic downturn.
 
 
 ```{r, echo = FALSE}
@@ -134,7 +135,7 @@ plot_histogram(
 )
 
 ```
-
+This visualization is a histogram of the GDP growth rate. We can see that most U.S. GDP growth rates fall between 0% and 5%, indicating that the economy typically expands at a modest pace. Occasional negative values represent recession periods where economic output declined. A few extreme highs and lows appear, reflecting rare events such as severe downturns or unusually strong recoveries.
 
 ```{r, echo = FALSE}
 plot_density(
@@ -145,7 +146,7 @@ plot_density(
 )
 
 ```
-
+This graph shows a Density plot of federal funds rate. We can see that U.S. federal funds rates most frequently fall in the low-to-moderate range, with the highest concentration around roughly 4–6%. Rates above 10% occur much less often, indicating that very high interest-rate environments are historically rare. Overall, the distribution is right-skewed, meaning low and moderate rates are far more common than extremely high ones.
 
 ```{r, echo = FALSE}
 plot_scatter(
@@ -158,7 +159,7 @@ plot_scatter(
 )
 
 ```
-
+This graph is a scatter plot showing the Federal Funds Rate vs. Unemployment Rate. It shows the relationship between the U.S. federal funds rate and the unemployment rate. There is no strong linear relationship, though higher unemployment rates often coincide with lower federal funds rates, reflecting monetary policy easing during weak labor markets. Overall, most observations cluster around moderate unemployment (4–8%) with fed funds rates below 10%.
 
 
 ```{r, echo = FALSE}
@@ -171,5 +172,11 @@ plot_scatter(
     y_label = "GDP Growth Rate (%)"
 )
 ```
-
+This visualization is a scatterplot of the GDP Growth Rate vs. Unemployment Rate. It shows the relationship between U.S. GDP growth and unemployment rates. There is no clear linear pattern, though higher unemployment generally corresponds to lower or negative GDP growth, consistent with economic downturns. Most observations cluster around moderate unemployment (4–8%) and modest GDP growth (0–5%), with only a few extreme outliers.
 # Analysis
+
+Using U.S. data on interest rates, GDP growth, and unemployment, we began by visually exploring how these variables behaved during the three major recessions of 2001, 2008, and 2020. The density plot of the federal funds rate shows that most rates tend to fall between about 4–6%, while very high rates are rare. The histogram of GDP growth suggests that the U.S. usually experiences modest growth, but growth becomes negative during recession years. When comparing interest rates and unemployment on a scatterplot, we see that periods of higher unemployment typically align with lower interest rates, which is consistent with the Federal Reserve lowering rates to stimulate the economy. The scatterplot of GDP growth and unemployment shows a wide spread of points, meaning higher unemployment does not always correspond directly to lower GDP growth, though extreme unemployment does tend to occur during times of very poor growth.
+
+Going forward, we plan to run separate simple linear regression models for each recession to test whether interest rates help predict GDP growth during those periods. This will allow us to see whether the strength of the relationship between the two variables changes across crises. If interest rates are significant predictors, it would support the idea that monetary policy plays an important role during economic downturns. We also plan to examine whether unemployment shows any statistical relationship with interest rates or GDP growth by looking at correlations and summary statistics.
+
+In the future, we may combine the data from all three recessions into a single model and compare it to the individual recession models. If the combined model performs worse, this would suggest that each crisis behaves differently and needs to be studied individually. Overall, our goal is to better understand whether interest rates reliably move together with economic conditions during recessions and whether their effects appear consistent across time
