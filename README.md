@@ -31,7 +31,7 @@ Follow these steps to reproduce the analysis:
 
 1. **Clone or download** this repository to your local machine.
    ```bash
-   git clone <repo-url>
+   git clone <[repo-url](https://github.com/snazzy77/STAT107_Team-17_Financial-Crisis.git)>
 
 2. Once you have all the files on your local machine, then open Rstudio.
 3. Now you have to import the three datasets.
