@@ -35,9 +35,9 @@ Follow these steps to reproduce the analysis:
 
 2. Once you have all the files on your local machine, then open Rstudio.
 3. Now you have to import the three datasets.
-4. First you need to run **00_requirements.R** so that you can load in all the necessary packages.
-5. Then you have to run **00_requirements.R** so that you have the functions to clean and preprocess the data for the next step.
-6. Then you have to run **DataCleaning.Rmd** so that you can use the functions in the previous step to get the cleaned and preprocessed data.
-7. Then you have to run **02_funct_Plots.R** so that you get the functions to make the plots and visualizations.
-8. Lastly you have to run **FinalReport.Rmd** so that you can get the full analytical report.
+4. First you need to run **00_requirements.R** so that you can load in all the necessary packages. To run the code you have to highlight the code and ctrl+enter to run.
+5. Then you have to run **01_funct_DataCleaning.R** so that you have the functions to clean and preprocess the data for the next step. To run the code you have to highlight the code and ctrl+enter to run.
+6. Then you have to run **DataCleaning.Rmd** so that you can use the functions in the previous step to get the cleaned and preprocessed data. To run the code click the run dropdown and click run all.
+7. Then you have to run **02_funct_Plots.R** so that you get the functions to make the plots and visualizations. To run the code you have to highlight the code and ctrl+enter to run.
+8. Lastly you have to run **FinalReport.Rmd** so that you can get the full analytical report. To run the code click the run dropdown and click run all.
 9. Then to get the pdf just knit the R markdown file to a pdf.
