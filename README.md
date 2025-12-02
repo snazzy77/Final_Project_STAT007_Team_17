@@ -18,6 +18,7 @@ This project analyzes key U.S. economic indicators, including the Federal Funds 
 
 ### **R Markdown Files**
 - **DataCleaning.Rmd** – Demonstrates data cleaning workflow and intermediate results.
+- **31_Data_Visualization.Rmd** - Has all the graphs, charts, models, and summaries in one place.
 - **FinalReport.Rmd** – Main analytical report combining data, plots, and discussion.
 
 ### **Other Files**
@@ -37,7 +38,8 @@ Follow these steps to reproduce the analysis:
 3. Now you have to import the three datasets.
 4. First you need to run **00_requirements.R** so that you can load in all the necessary packages. To run the code you have to highlight the code and ctrl+enter to run.
 5. Then you have to run **01_funct_DataCleaning.R** so that you have the functions to clean and preprocess the data for the next step. To run the code you have to highlight the code and ctrl+enter to run.
-6. Then you have to run **DataCleaning.Rmd** so that you can use the functions in the previous step to get the cleaned and preprocessed data. To run the code click the run dropdown and click run all.
-7. Then you have to run **02_funct_Plots.R** so that you get the functions to make the plots and visualizations. To run the code you have to highlight the code and ctrl+enter to run.
-8. Lastly you have to run **FinalReport.Rmd** so that you can get the full analytical report. To run the code click the run dropdown and click run all.
-9. Then to get the pdf just knit the R markdown file to a pdf.
+6. Then you have to run **02_funct_Plots.R** so that you get the functions to make the plots and visualizations. To run the code you have to highlight the code and ctrl+enter to run.
+7. Then you have to run **DataCleaning.Rmd** so that you can use the functions in the previous step to get the cleaned and preprocessed data. To run the code click the run dropdown and click run all.
+8. Then you have to run **31_Data_Visualization.Rmd** so that you can use the functions that were made in the funct_Plots to create the visualizations. To run the code click the run dropdown and click run all.
+9. Lastly you have to run **FinalReport.Rmd** so that you can get the full analytical report. To run the code click the run dropdown and click run all.
+10. Then to get the pdf just knit the R markdown file to a pdf.
