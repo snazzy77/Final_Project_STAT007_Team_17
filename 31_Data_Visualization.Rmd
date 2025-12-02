@@ -1,0 +1,200 @@
+---
+title: 'Data Visualization'
+author: "Team 17"
+date: 'Due 2025-11-07'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("00_requirements.R") 
+source("01_funct_DataCleaning.R") 
+source("02_funct_Plots.R")
+load("12_Cleaned_Data.RData")
+```
+
+# Single Time Series Plot for Federal Funds
+
+```{r}
+plot_single_time_series(
+    df = fedfunds_processed,
+    title = "Federal Funds Rate Over Time (Monthly)",
+    y_label = "Fed Funds Rate (%)",
+    color = 'blue'
+)
+```
+
+# Single Time Series Plot for Unemployment Rate
+
+```{r}
+plot_single_time_series(
+    df = unrate_processed,
+    title = "Unemployment Rate Over Time (Monthly)",
+    y_label = "Unemployment Rate (%)",
+    color = 'red'
+)
+```
+
+# Single Time Series Plot for Growth Rate
+
+```{r}
+plot_single_time_series(
+    df = gdp_processed,
+    title = "GDP Growth Rate Over Time (Quarterly)",
+    y_label = "Annualized GDP Growth Rate (%)",
+    color = 'darkgreen',
+    add_hline = TRUE # <--- NEW ARGUMENT
+)
+```
+# Numerical Summary
+
+```{r}
+summary(combined_data)
+```
+
+
+# Histogram Plot
+
+```{r}
+plot_histogram(
+    data = combined_data,
+    column_name = "GDP_Growth_Rate",
+    title_suffix = "GDP Growth Rate"
+)
+
+```
+
+# Density Plot
+
+```{r}
+plot_density(
+    data = combined_data,
+    column_name = "Fed_Funds_Rate",
+    title_suffix = "Federal Funds Rate",
+    color = "purple"
+)
+
+```
+# Scatter Plot
+
+```{r}
+plot_scatter(
+    data = combined_data,
+    x_col = "Unemployment_Rate",
+    y_col = "Fed_Funds_Rate",
+    main_title = "Federal Funds Rate vs. Unemployment Rate",
+    x_label = "Unemployment Rate (%)",
+    y_label = "Fed Funds Rate (%)"
+)
+
+```
+# Scatter Plot
+
+```{r}
+plot_scatter(
+    data = combined_data,
+    x_col = "Unemployment_Rate",
+    y_col = "GDP_Growth_Rate",
+    main_title = "GDP Growth Rate vs. Unemployment Rate",
+    x_label = "Unemployment Rate (%)",
+    y_label = "GDP Growth Rate (%)"
+)
+```
+# Scatter Plot
+
+```{r}
+plot_scatter(
+    data = combined_data,
+    x_col = "Fed_Funds_Rate", # Using Fed Funds Rate as the predictor (x)
+    y_col = "GDP_Growth_Rate",
+    main_title = "GDP Growth Rate vs. Federal Funds Rate",
+    x_label = "Fed Funds Rate (%)",
+    y_label = "GDP Growth Rate (%)"
+)
+```
+# Defining Variables
+
+```{r}
+# Define crisis periods based on the observation_date column
+crisis_2001 <- combined_data$observation_date >= as.Date("2001-03-01") & combined_data$observation_date <= as.Date("2002-12-31")
+crisis_2008 <- combined_data$observation_date >= as.Date("2007-12-01") & combined_data$observation_date <= as.Date("2009-12-31")
+crisis_2020 <- combined_data$observation_date >= as.Date("2020-02-01") & combined_data$observation_date <= as.Date("2021-06-30")
+
+# Create the new categorical variable 'Is_Crisis'
+combined_data$Is_Crisis <- "Non_Crisis"
+combined_data$Is_Crisis[crisis_2001 | crisis_2008 | crisis_2020] <- "Crisis"
+combined_data$Is_Crisis <- as.factor(combined_data$Is_Crisis)
+```
+
+
+# Numerical Summary
+
+```{r}
+summary(combined_data)
+```
+
+# Scatter Plot (Second Version)
+
+```{r}
+plot_scatter2(
+    data = combined_data,
+    x_col = "Unemployment_Rate",
+    y_col = "Fed_Funds_Rate",
+    main_title = "Unemployment vs. Fed Funds Rate (Colored by Crisis)",
+    x_label = "Unemployment Rate (%)",
+    y_label = "Fed Funds Rate (%)",
+    color_col = "Is_Crisis" # Colors points based on the new variable
+)
+```
+
+# Scatter Plot
+
+```{r}
+plot_scatter(
+    data = combined_data,
+    x_col = "Fed_Funds_Rate",
+    y_col = "GDP_Growth_Rate",
+    main_title = "GDP Growth Rate vs. Federal Funds Rate",
+    x_label = "Fed Funds Rate (%)",
+    y_label = "GDP Growth Rate (%)"
+)
+```
+
+
+# Defining Variables and Outputting Results
+
+```{r}
+# 1. Fed Funds Rate vs. Unemployment Rate
+cor_unrate_fedfunds <- cor.test(combined_data$Unemployment_Rate, combined_data$Fed_Funds_Rate)
+
+# 2. GDP Growth Rate vs. Fed Funds Rate
+cor_gdp_fedfunds <- cor.test(combined_data$GDP_Growth_Rate, combined_data$Fed_Funds_Rate)
+
+# Output test results
+cor_unrate_fedfunds
+cor_gdp_fedfunds
+```
+
+# Subset the data, Fit the linear models, Print models
+
+```{r}
+# 1. Subset the data
+crisis_data <- combined_data[combined_data$Is_Crisis == "Crisis", ]
+non_crisis_data <- combined_data[combined_data$Is_Crisis == "Non_Crisis", ]
+
+# 2. Fit the separate linear models
+lm_crisis <- lm(Fed_Funds_Rate ~ Unemployment_Rate, data = crisis_data)
+lm_non_crisis <- lm(Fed_Funds_Rate ~ Unemployment_Rate, data = non_crisis_data)
+
+# Print summaries
+summary(lm_crisis)
+summary(lm_non_crisis)
+```
+
+# Saving the Analysis RData
+
+``` {r save-final-image} 
+save.image(file = "final_analysis_environment.RData")
+```
