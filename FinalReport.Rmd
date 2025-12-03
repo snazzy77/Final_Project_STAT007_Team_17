@@ -95,7 +95,7 @@ This visualization shows the GDP growth by quarter. We can see that GDP growth f
 ```{r, echo = FALSE}
 summary(combined_data)
 ```
-
+This summary table provides descriptive statistics for all of the variables in the combined dataset, including Federal Funds Rate, GDP Growth Rate, and Unemployment Rate. It shows that GDP growth mostly falls between 0% and 5%, while federal funds rates are generally below 10%.
 
 ```{r, echo = FALSE}
 plot_histogram(
@@ -154,6 +154,7 @@ plot_scatter(
     y_label = "GDP Growth Rate (%)"
 )
 ```
+This scatter plot visualizes GDP growth vs. federal funds rate. There is a slight positive trend during non-recession periods, while low rates during recessions correspond to negative GDP growth.
 
 ```{r, echo = FALSE}
 summary(combined_data)
@@ -170,6 +171,7 @@ plot_scatter2(
     color_col = "Is_Crisis" # Colors points based on the new variable
 )
 ```
+This scatter plot shows unemployment vs. federal funds rate, with points colored by crisis periods. During recessions, higher unemployment aligns with lower rates, indicating the Fed’s economic response.
 
 ```{r, echo = FALSE}
 plot_scatter(
@@ -187,18 +189,39 @@ plot_scatter(
 cor_unrate_fedfunds
 cor_gdp_fedfunds
 ```
+These correlation values indicate the linear relationships between unemployment and federal funds rate (cor_unrate_fedfunds) and GDP growth and federal funds rate (cor_gdp_fedfunds). Essentially, negative correlation for unemployment demonstrates rate cuts during high unemployment, while GDP correlation shows how rates track economic growth.
 
 ```{r, echo = FALSE}
 # Print summaries for documentation/review
 summary(lm_crisis)
 summary(lm_non_crisis)
 ```
-
+These linear model summaries show how well federal funds rate predicts GDP growth during crisis (lm_crisis) and non-crisis (lm_non_crisis) periods. Coefficients, standard errors, and p-values are all indicators of whether or not interest rates significantly predict GDP growth as well as if relationships differ by economic conditions.
 
 # Analysis
 
 Using U.S. data on interest rates, GDP growth, and unemployment, we began by visually exploring how these variables behaved during the three major recessions of 2001, 2008, and 2020. The density plot of the federal funds rate shows that most rates tend to fall between about 4–6%, while very high rates are rare. The histogram of GDP growth suggests that the U.S. usually experiences modest growth, but growth becomes negative during recession years. When comparing interest rates and unemployment on a scatterplot, we see that periods of higher unemployment typically align with lower interest rates, which is consistent with the Federal Reserve lowering rates to stimulate the economy. The scatterplot of GDP growth and unemployment shows a wide spread of points, meaning higher unemployment does not always correspond directly to lower GDP growth, though extreme unemployment does tend to occur during times of very poor growth.
 
+To quantify these relationships, we calculated Pearson correlations across all periods:
+    Unemployment Rate vs. Fed Funds Rate: correlation = 0.053, p-value = 0.376
+      This indicates almost no linear association across the dataset.
+
+    GDP Growth Rate vs. Fed Funds Rate: correlation = -0.081, p-value = 0.174
+      While just slightly negative, the correlation is weak and not statistically significant.
+
+We then ran separate linear regressions for crisis and non-crisis periods:
+    The R2 value for crisis periods was 0.457, meaning that during recessions, higher unemployment reliably predicts lower interest rates.
+    The R2 value for non-crisis periods was 0.022, meaning that unemployment explains essentially none of the variability in interest rates.
+
+The results that we got from the regressions confirm what our visualizations suggested: during recessions, monetary policy shows a stronger and more predictable relationship with unemployment, while in non-crisis periods, the connection is weak and inconsistent.
+
 Going forward, we plan to run separate simple linear regression models for each recession to test whether interest rates help predict GDP growth during those periods. This will allow us to see whether the strength of the relationship between the two variables changes across crises. If interest rates are significant predictors, it would support the idea that monetary policy plays an important role during economic downturns. We also plan to examine whether unemployment shows any statistical relationship with interest rates or GDP growth by looking at correlations and summary statistics.
 
-In the future, we may combine the data from all three recessions into a single model and compare it to the individual recession models. If the combined model performs worse, this would suggest that each crisis behaves differently and needs to be studied individually. Overall, our goal is to better understand whether interest rates reliably move together with economic conditions during recessions and whether their effects appear consistent across time
+# Conslusions
+
+All in all, our research led us to make several conclusions in regards to interest rates, GDP growth, and unemployment:
+    - During recessions, the Federal Reserve lowers interest rates in response to rising unemployment. This relationship is statistically significant and explains a moderate proportion of the variability in rates.
+    - Across all periods, unemployment on its own does not accurately predict interest rates or GDP growth. Economic dynamics in stable periods are influenced by multiple factors aside from just unemployment.
+    - Recessions, specifically the COVID-19 pandemic, introduce extreme values in GDP growth, unemployment, and interest rates. For this reason, it is important to model each economic decline individually rather than using a singular model.
+
+In the future, we may combine the data from all three recessions into a single model and compare it to the individual recession models. If the combined model performs worse, this would confirm that each crisis behaves differently and needs to be studied individually. Overall, our findings suggest that interest rates move in a predictable pattern during economic downturns. However, these relationships are complex and vary depending on the crisis. Therefore, analyzing each recession individually provides a better understanding of the impact of monetary policy on the economy.
