@@ -17,7 +17,7 @@ load("final_analysis_environment.RData")
 
 # Abstract
 
-We will be analyzing the relationship between interest rates and economic growth/indicators across financial crises that occurred in 2001, 2008, and 2020 (the dot-com crisis, the great recession and the COVID-induced recession). We will specifically analyze GDP growth and unemployment during the three major U.S. financial crises and we will determine whether changes in interest rates reveal relationships with GDP growth and unemployment across economic disasters. According to our preliminary analysis, interest rates and GDP growth seem to move in the same direction; however, the strength and significance of this relationship varies across crises.
+We will be analyzing the relationship between interest rates and economic growth/indicators across financial crises that occurred in 2001, 2008, and 2020 (the dot-com crisis, the great recession and the COVID-induced recession). We will specifically analyze GDP growth and unemployment during the three major U.S. financial crises and we will determine whether changes in interest rates reveal relationships with GDP growth and unemployment across economic disasters. According to our preliminary analysis, interest rates and GDP growth seem to move in the same direction; however, the strength and significance of this relationship varies across crises. In this project, we analyze the relationship between U.S. interest rates and unemployment during both crisis and non-crisis periods. We aim to determine whether monetary policy reacts more strongly to labor market conditions during recessions.
 
 # Introduction
 
@@ -25,7 +25,7 @@ The ultimate goal of this project is to explore how interest rates interact with
 
 # Data
 
-Our dataset will be a combination of public economic data from the Federal Reserve Economic Data (FRED) database. Key variables we will utilize include: 
+We filtered the dataset to include only complete observations, removed missing values, and ensured both variables were aligned by month and time period. Data was split into crisis vs non-crisis subsets for modeling. Our dataset will be a combination of public economic data from the Federal Reserve Economic Data (FRED) database. Key variables we will utilize include: 
 
 - Date
 
@@ -225,3 +225,4 @@ All in all, our research led us to make several conclusions in regards to intere
     - Recessions, specifically the COVID-19 pandemic, introduce extreme values in GDP growth, unemployment, and interest rates. For this reason, it is important to model each economic decline individually rather than using a singular model.
 
 In the future, we may combine the data from all three recessions into a single model and compare it to the individual recession models. If the combined model performs worse, this would confirm that each crisis behaves differently and needs to be studied individually. Overall, our findings suggest that interest rates move in a predictable pattern during economic downturns. However, these relationships are complex and vary depending on the crisis. Therefore, analyzing each recession individually provides a better understanding of the impact of monetary policy on the economy.
+
