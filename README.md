@@ -50,5 +50,6 @@ Follow the following steps if you want to just reproduce **FinalReport.Rmd**:
 1. **Clone or download** this repository to your local machine, by going to rstudio, file, new project, version control, git, and paste the link below. You should now have all the files in your directory. You can also just download the files mentioned below and upload into your RStudio workspace manually.
    ```bash
    https://github.com/snazzy77/STAT107_Team-17_Financial-Crisis.git
-2. Now import/load **12_Cleaned_Data.RData** & **final_analysis_environment.RData** into your enviornment.
-3. Now open the **FinalReport.Rmd** and go to the top and click the run dropdown and click run all.
+2. First you need to run **00_requirements.R** so that you can load in all the necessary packages. To run the code you have to highlight the code and ctrl+enter to run.
+3. Now import/load **12_Cleaned_Data.RData** & **final_analysis_environment.RData** into your enviornment.
+4. Now open the **FinalReport.Rmd** and go to the top and click the run dropdown and click run all.
