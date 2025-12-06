@@ -24,6 +24,10 @@ This project analyzes key U.S. economic indicators, including the Federal Funds 
 ### **Other Files**
 - **README.md** – This file, providing an overview and reproduction instructions.
 
+### **RData Files**
+- **12_Cleaned_Data.RData** - Contains the data from **DataCleaning.Rmd**.
+- **final_analysis_environment.RData** - Contains the data from **31_Data_Visualization.Rmd**.
+
 ---
 
 ## How to Reproduce the Results
