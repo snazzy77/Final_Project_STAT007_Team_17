@@ -1,4 +1,4 @@
-# Final_Project_STAT007_Team_17
+# STAT107_Team-17_Financial-Crisis
 
 This project analyzes key U.S. economic indicators, including the Federal Funds Rate, GDP growth, and unemployment rates, to study macroeconomic relationships and trends.
 
